@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Budget Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #budget-container {
+            margin: 20px;
+        }
+        #budget-container input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        #budget-container button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #budget-container button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div id="budget-container">
+        <h2>Budget Tracker</h2>
+        <p>Enter your monthly budget:</p>
+        <input type="number" id="monthly-budget" placeholder="Enter monthly budget">
+        <button onclick="trackBudget()">Track Budget</button>
+        <h3 id="budget-result">Your budget result will appear here</h3>
+        <h3>Expenses</h3>
+        <input type="number" id="expenses" placeholder="Enter expenses">
+        <button onclick="calculateBudget()">Calculate Budget</button>
+        <h3 id="budget-result-total">Your total budget result will appear here</h3>
+    </div>
+
+    <script>
+        function trackBudget() {
+            var monthlyBudget = document.getElementById("monthly-budget").value;
+            if (monthlyBudget > 0) {
+                document.getElementById("budget-result").innerHTML = "Your monthly budget is: $" + monthlyBudget;
+            } else {
+                document.getElementById("budget-result").innerHTML = "Please enter a valid monthly budget.";
+            }
+        }
+
+        function calculateBudget() {
+            var monthlyBudget = document.getElementById("monthly-budget").value;
+            var expenses = document.getElementById("expenses").value;
+
+            if (monthlyBudget > 0 && expenses > 0) {
+                var totalBudget = parseInt(monthlyBudget) - parseInt(expenses);
+                document.getElementById("budget-result-total").innerHTML = "Your total budget is: $" + totalBudget;
+            } else {
+                document.getElementById("budget-result-total").innerHTML = "Please enter valid values for monthly budget and expenses.";
+            }
+        }
+    </script>
+</body>
+</html>
